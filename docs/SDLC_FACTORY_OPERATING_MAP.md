@@ -4,7 +4,7 @@ One narrative map of the factory: the law it runs under, the two frameworks that
 
 ## Introduction
 
-The factory is a software development system built on one principle: **the human engineers constraints; the agent generates syntax inside them.** Its moving parts — 35 skills, 4 seats, a governance manifold, a nine-layer tool stack, a spec chain — are each documented somewhere. This is the one document answering the Tuesday-morning question: **"I'm staring at a piece of work — what do I invoke, in what order, and why?"**
+The factory is a software development system built on one principle: **the human engineers constraints; the agent generates syntax inside them.** Its moving parts — 36 skills, 4 seats, a governance manifold, a nine-layer tool stack, a spec chain — are each documented somewhere. This is the one document answering the Tuesday-morning question: **"I'm staring at a piece of work — what do I invoke, in what order, and why?"**
 
 Without it, three failure modes creep in: the operator becomes the routing layer (the day they forget which skill precedes which, the factory runs wrong until a gate fails); skills become shelf-ware (the wrong skill produces no error, just quietly worse output); and the lifecycle and the skill list drift apart (a future skill lands and nobody knows where it plugs in).
 
@@ -212,7 +212,7 @@ The one rule: the proof floor *proves*, symbolic editing *writes*, the graph *na
 - Unsure whether it's a rig change → if it touches anything under the harness-config repo, it's `rig-change`.
 - A guard blocked a write → the contract's scope is stale or the Registry is wrong; fix the scope, never force the write.
 
-## Appendix: Full Skill Inventory (31)
+## Appendix: Full Skill Inventory (36)
 
 The nine workflow skills carry a seat-persona: one identity — the seat and the human word in the same token. Specialists and disciplines follow.
 
@@ -251,5 +251,6 @@ The nine workflow skills carry a seat-persona: one identity — the seat and the
 | ui-engineering | discipline | automatic, worker, UI | worker | Production-quality, accessible interfaces — not the "AI look" |
 | performance-optimization | discipline | automatic on perf work | worker | Measure first; neutral results revert; correctness gates the metric |
 | browser-testing-with-devtools | procedural | browser-facing work (tool gated) | operator or worker | Real-browser evidence: screenshots, console, network |
+| sentinel | procedural | invoked: "run the sentinel", "what needs attention" | operator conversation · the signal reader | Polls a governed product's live data against its declared signal contract; analyzes what fires and brings the operator a decision brief — evidence pointer on every claim; proposes, never disposes; never writes to the product (rig-native 2026-10-03; first consumer: Cartograph TCE phase 14) |
 | memory | discipline | automatic, all | every seat | What the agent remembers carries provenance or gets deleted; recall advises, never legislates |
 | brainstorming | discipline | before any creative work | every seat | Nothing implements before you approve the design |

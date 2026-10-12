@@ -45,6 +45,15 @@ for (const t of binTools) ok(`register covers bin/${t}`, register.includes(`bin/
 const skills = readdirSync(join(REPO, "skills"), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
 for (const s of skills) ok(`register covers skill ${s}`, register.includes(s));
 
+// --- Skill-count drift check (2026-10-03 operator finding: appendix heading lagged 4 bumps) ---
+const opMapPath = join(REPO, "docs", "SDLC_FACTORY_OPERATING_MAP.md");
+const opMap = readFileSync(opMapPath, "utf8");
+ok("map appendix count matches skills/ tree",
+  opMap.includes(`## Appendix: Full Skill Inventory (${skills.length})`),
+  `appendix heading vs ${skills.length} skill dirs`);
+const bodyCount = opMap.match(/moving parts — (\d+) skills/)?.[1];
+ok("map body count matches skills/ tree", bodyCount === String(skills.length), `body says ${bodyCount}, tree has ${skills.length}`);
+
 // --- Deferred half: every §D section is complete -----------------------------------
 const sections = register.match(/### §D\.\d+ [^\n]+/g) ?? [];
 ok("register has §D.1–§D.14+", sections.length >= 14, `found ${sections.length}`);

@@ -333,6 +333,26 @@
       "file": "templates/specs/intent.md",
       "line": 33
     },
+    "templates/specs/phase.md#goal": {
+      "file": "templates/specs/phase.md",
+      "line": 12
+    },
+    "templates/specs/phase.md#build": {
+      "file": "templates/specs/phase.md",
+      "line": 15
+    },
+    "templates/specs/phase.md#constraints": {
+      "file": "templates/specs/phase.md",
+      "line": 19
+    },
+    "templates/specs/phase.md#acceptance-check": {
+      "file": "templates/specs/phase.md",
+      "line": 25
+    },
+    "templates/specs/phase.md#not-in-this-phase": {
+      "file": "templates/specs/phase.md",
+      "line": 30
+    },
     "templates/specs/plan.md#architecture-decisions": {
       "file": "templates/specs/plan.md",
       "line": 6

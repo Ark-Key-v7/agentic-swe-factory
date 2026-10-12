@@ -854,3 +854,38 @@ After any rig change that alters the ledger above: update this file in the same 
   tighten at next touch).
 - skill-authoring v2.1.0 → 2.2.0; plugin 0.4.7; smoke pin 0.4.7; wrapper
   manifests synced. No other skills touched.
+
+## Rig-change 2026-10-03 — map appendix count fix + count-drift driver (operator finding)
+- Operator: appendix heading said "(31)" while the installed plugin carries
+  35 — the heading lagged four bumps (31→33→34→35): each changeset updated
+  the body count, the lists, and the table rows but missed the heading
+  number. Fixed: (31) → (35).
+- Root cause closed mechanically: canon-register driver gains two
+  assertions — appendix heading count == `ls skills/` dir count, and the
+  map's body count ("moving parts — N skills") == tree. This drift class is
+  now a red driver, not an operator find.
+- Docs + driver only — no plugin content, no version bump.
+
+## Rig-change 2026-10-12 — sentinel landing completed + count-drift driver (parallel-session reconciliation)
+- `sentinel` (rig-native, 2026-10-03, operator-confirmed: authored in a
+  parallel session, landed as 0f492c2 with an incomplete bookkeeping tail —
+  the commit itself is sound; this changeset completes what it claimed).
+  Sentinel: polls a governed product's live data against its declared
+  signal contract; decision briefs with an evidence pointer per claim;
+  proposes at the human gate, never disposes, never writes to the product.
+  First consumer: Cartograph TCE phase 14. Rides with the phase-spec
+  convention (templates/specs/phase.md; scope v2.2.0 phases mode; planner
+  write_scope extends to specs/phases) from the same commit.
+- Completed tail: map body 35→36 + appendix heading + sentinel appendix row
+  (was missing entirely); register skills row gains sentinel; README 36;
+  plugin 0.4.8 (0f492c2 changed plugin content but never bumped — bump law
+  §D.35); smoke pin 0.4.8; wrapper manifests synced (36 skills).
+- Count-drift assertions (from the preceding operator finding) now live in
+  the register driver: appendix heading and body count must equal the
+  skills/ tree — they ran RED against 0f492c2's drift before this fix,
+  which is the check working; both green after this changeset.
+- Lesson on record: parallel sessions mutating the rig must each close the
+  full rig-change tail (bump, register row, map, status). The driver now
+  catches the map half mechanically; the register/README half is caught by
+  canon-register's per-skill coverage loop (it flagged `sentinel` RED in
+  the same run).
