@@ -3,7 +3,7 @@ name: skill-authoring
 description: Author or import rig skills. Use when authoring any new procedural loop for the rig, evolving an existing skill, or importing a foreign SKILL.md (conformance pass). Covers both skill classes, the folder anatomy, and the import protocol.
 metadata:
   author: Agentic SWE Factory
-  version: 2.2.0
+  version: 2.3.0
   class: procedural
   trigger_phrases: ["author a new skill", "create a skill", "new skill", "import this skill", "port this skill", "skill template", "update the skill format"]
   v2.1: mode router + bake-off protocol (WP-D-5); renamed from template-skill (2026-09-30, operator finding — the name read as a starter template, not the authoring authority)
@@ -220,3 +220,14 @@ true` (Pi). Delete `disable-model-invocation` only for skills the model may
 route to itself. No XML angle brackets anywhere in frontmatter or metadata.
 metadata.class (procedural | discipline) is required from
 format v2.0.0; lint-skills fails on its absence.
+
+
+## §6. The Two Registers (prose discipline for every skill)
+
+Every sentence a skill ships belongs to one of two registers. Mixing them produces the bureaucratic dialect operators reject.
+
+**Instruction register** — steps, commands, laws, gates, checklists. STE-tight: short sentences, active voice, one instruction per line, condition before command, modals can/will/must. Precision is the product.
+
+**Explanation register** — context, rationale, doctrine, voice, summaries, anything a human reads for understanding. Flowing natural cadence: name the actor, name the reason, let emphasis land where meaning lives. Tune with SPRT when the prose is persona voice or end-product copy: syntax (length distribution, mood, front-loaded verbs), prose (register, contraction density, concrete nouns over abstraction), rhythm (cadence, syllable bias, parallel anchors), tone (proximity, stance, subtext), and the discourse modality the artifact serves (conversational, sensory, directive).
+
+The register test for both: if a sentence would not survive being said aloud to a colleague, rewrite it. Compliance prose — passive nominalizations, section citations standing in for reasons, "governed/enumerated/pursuant" vocabulary — is a defect in both registers.
