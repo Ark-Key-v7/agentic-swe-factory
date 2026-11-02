@@ -14,7 +14,7 @@ Zero-state steps that must happen **before** this repo exists on the machine
 or your operator notes):
 
 1. Install Node (version per `package-pins.json`) and one agent CLI (Pi and/or ZCode).
-2. `git clone git@github.com:Ark-Key-v7/harness-config.git ~/factory-rig/sources/harness-config`
+2. `git clone git@github.com:Ark-Key-v7/harness-config.git ~/factory-rig/sources/agentic-swe-factory`
 3. Open `START_HERE.md` with the agent and follow Situation 1.
 
 Canon handbooks live as siblings under `~/factory-rig/sources/_canon-handbooks/`
@@ -38,7 +38,7 @@ New task loop, seats, contracts, review: **`docs/OPERATOR_GUIDE.md`**.
 
 ## Situation 4 — Changing the rig itself
 
-Author in `~/factory-rig/sources/harness-config` (this repo) via the `rig-change`
+Author in `~/factory-rig/sources/agentic-swe-factory` (this repo) via the `rig-change`
 skill. Never edit `~/.pi/agent` — it is the read-only, pull-only deployed clone.
 Change and secret rules: **`README.md`**.
 

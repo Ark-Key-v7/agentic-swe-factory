@@ -19,7 +19,7 @@ plain chat text and proceed only on an explicit typed affirmative; treat
 dismissal, timeout, or ambiguity as non-ratification.
 
 #### 1. Trigger Context & Topological Binding
-You are operating in the harness-config SOURCE repo (~/factory-rig/sources/harness-config).
+You are operating in the harness-config SOURCE repo (~/factory-rig/sources/agentic-swe-factory).
 Rig law applies: L6 Config-as-Code (every change committed), L12 supply-chain
 policy, and the sync chain — source repo → push → pull into the read-only
 active clone at ~/.pi/agent. The chain is not done until the pull succeeds.

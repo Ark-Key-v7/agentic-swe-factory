@@ -78,7 +78,7 @@ factory_floor:
     validated_at_utc: "2026-08-26T10:37:08Z"
 
 repository:
-  authoring_copy: "~/factory-rig/sources/harness-config"
+  authoring_copy: "~/factory-rig/sources/agentic-swe-factory"
   active_clone: "~/.pi/agent"
   remote_status: "pending_private_remote"
 

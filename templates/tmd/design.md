@@ -2,188 +2,183 @@
 manifold_version: "TEMPLATE_VALUE_REQUIRED — semver; bump on any law change, e.g. 1.0.0"
 last_verified: "TEMPLATE_VALUE_REQUIRED — SHA of the commit that last modified this file. NEVER a date."
 precedence: 5
+name: "TEMPLATE_VALUE_REQUIRED — project title"
+description: "TEMPLATE_VALUE_REQUIRED — one-line tagline"
+# --- Official DESIGN.md token schema (normative; Stitch/impeccable-compatible) ---
+colors:
+  background: "oklch(0.13 0.01 260)"      # base surface
+  foreground: "oklch(0.95 0.005 260)"     # base text
+  primary: "TEMPLATE_VALUE"               # primary action
+  secondary: "TEMPLATE_VALUE"             # secondary action (omit if unused)
+  muted: "TEMPLATE_VALUE"                 # de-emphasized text/surface
+  destructive: "TEMPLATE_VALUE"
+  border: "TEMPLATE_VALUE"
+  ring: "TEMPLATE_VALUE"                  # focus ring, ≥3:1 contrast
+typography:
+  display: { fontFamily: "TEMPLATE_VALUE", fontWeight: 600 }
+  body: { fontFamily: "TEMPLATE_VALUE", fontSize: "1rem", lineHeight: 1.5 }
+  mono: { fontFamily: "TEMPLATE_VALUE" }
+rounded:
+  default: "0.5rem"                       # one default radius
+  raised: "0.75rem"                       # one raised-surface radius
+spacing:
+  base: "0.25rem"                         # 4pt system; all spacing in multiples
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.background}"
+    rounded: "{rounded.default}"
+# --- ARK extension keys (ignored by spec validators; carried for agency law) ---
+ark:
+  mode: "persuade"                        # persuade | operate | read | experience
+  genre: "editorial"                      # editorial | modern-minimal | atmospheric | playful
+  icon_library: "lucide-svelte"
+  ui_primitive_library: "shadcn-svelte"   # mirrors the gravity.md Stack Manifest
+  tokens_artifact: "src/styles/tokens.css"  # mirror of these values; this file governs, drift reconciles via PR
+  motion_engine: "gsap"                   # the single engine
 ---
 
 # DESIGN.MD — THE VISUAL PROTOCOL
 
-Precedence rank 5 of 5. Subordinate to all other manifold files. A visual rule
-that conflicts with safety, structure, temporal, or vocabulary law loses
-automatically. Prevents the agent from hallucinating UI patterns, colors,
-typography, or unauthorized component libraries. Binds to the Stack Manifest's
-ui_primitive_library and styling_system slots (gravity.md §C.1).
+Precedence rank 5 of 5. Subordinate to all other manifold files; the
+constitutional layer (TMD Specification v2.1, §0: precedence, conflict halt,
+manifest header, monorepo inheritance, instruction-file boundary) applies
+verbatim. Binds to the Stack Manifest's ui_primitive_library and
+styling_system slots (gravity.md). On cross-file conflict: HALT the Task
+Contract and escalate MANIFOLD_CONFLICT per §0.2.
 
-**Inert-state law (fixed):** for projects with no UI surface
-(project_type: service | library), this file declares itself INERT rather than
-being deleted: state "INERT — no presentation layer" here and keep the file;
-the precedence chain and headers remain intact.
+**Inert-state law:** for projects with no UI surface (project_type: service |
+library), declare "INERT — no presentation layer" here and keep the file.
 
-## ZONE A — THE LAW (fixed, invariant — never edit per project)
+**Design-platform boundary:** external design platforms (canvas tools,
+studios, generators) are design-time PRODUCERS. Their exports are source
+material; this file is the system of record.
 
-### A.1 Constitutional layer (TMD Specification v2.1, §0)
+**Authorship:** humans ratify through the manifold PR. The ratified design
+agent (ark-agents head-of-web-design) may draft entries; drafts carry
+`derived_from` and become law only on merge. Amendments append with dated
+notes, never silent overwrites.
 
-**The Precedence Law (§0.1).** rules.md (1) > gravity.md (2) > promises.md (3)
-> glossary.md (4) > design.md (5). Higher precedence wins automatically; no
-agent interpretation. This file is the lowest rank: nothing yields to it.
+**Normative model:** the frontmatter tokens are the law — machine-checkable,
+linter-validatable, the name every component references. Body sections are
+context: they explain application, record decisions, and carry the Do's and
+Don'ts. When prose and tokens disagree, the tokens win and the prose gets
+fixed.
 
-**The Conflict Halt (§0.2).** On any cross-file contradiction: HALT the Task
-Contract; ESCALATE via MANIFOLD_CONFLICT event naming both files, both
-clauses, and the triggering contract; RESUME only after a human-authored PR
-merges and last_verified headers advance — re-read from the new HEAD.
+## Overview
 
-**The Manifest Header (§0.3).** manifold_version (semver), last_verified
-(commit SHA), precedence (rank). No valid header = invalid law; halt per §0.2.
+Creative North Star: one named metaphor for the whole system ("TEMPLATE_VALUE
+— e.g. The Editorial Sanctuary"). Two to three sentences of personality,
+density, and aesthetic philosophy, starting from the North Star. Mode and
+genre from the `ark` block get their rationale here: what visitor success
+looks like on these surfaces and why this register serves it. Close with a
+Key Characteristics bullet list.
 
-**Monorepo Inheritance (§0.4).** One manifold per repository, at root; total
-inheritance. Package-local manifold files and duplicated root law forbidden.
+## Colors
 
-**The Instruction-File Boundary (§0.5).** One root AGENTS.md, ≤50 lines, zero
-constraint text. Harness markdown lives exclusively in /.agents/.
+One sentence of palette character, then the roles. All color use references
+the frontmatter tokens by name — raw hex, rgb(), hsl(), or palette literals
+outside this file are forbidden. Theme variants (dark/light) resolve through
+the theme system, never through conditional classes in components. Contrast
+floors: 4.5:1 body text, 3:1 large text and essential UI.
 
-**The Enforcement Registry (§0.6).** Every law names its wall (instrument
-class; concrete tools bound in gravity.md's gates). Ungateable law is marked
-enforcement: manual-review — never silently unenforced.
+## Typography
 
-**Design-platform boundary (rig law).** External design platforms are
-design-time PRODUCERS, never canon owners. Their exports are source material;
-this file is the system of record. On conflict, this file wins.
+The three font roles from the frontmatter (display, body, mono — at most
+three families; two is the norm). Components reference roles by token name
+only; undeclared font-family values are forbidden. Scale rule (e.g. Tailwind
+text-* steps or a named ratio), heading weights, and the measure target
+(45–75 characters for running text).
 
-### A.2 Framework & styling law (fixed)
+## Layout
 
-- **Components:** all components MUST use the primitives declared in the Stack Manifest (ui_primitive_library) and inventoried in Zone C §C.2. Composing raw elements outside the primitive inventory is forbidden.
-- **Styling:** the declared styling_system utility classes exclusively.
-- **Icons:** one declared icon set only (Zone C §C.1).
+Declared page regions and per-breakpoint container padding. Mobile-first:
+shifts only at the declared breakpoints; desktop-first design and custom
+breakpoints are forbidden. Spacing in multiples of the 4pt base. Pages
+compose declared regions; ad-hoc page-level markup soup is out.
 
-### A.3 Color token law (fixed)
+## Elevation & Depth
 
-Colors are referenced exclusively through semantic tokens. Raw hex, rgb(),
-hsl(), and palette literals are forbidden outside this file's token
-definitions. Theme variants (dark/light) are resolved by the theme, never by
-conditional classes in components. The default token set (Zone C §C.1):
+The project's depth philosophy in one phrase (flat with tone steps /
+ambient shadow / structural lift). Shadows and glows on resting elements
+are the anti-pattern; tone steps between surfaces are the default. What
+truly floats (menus, dialogs) may elevate.
 
-| Token | Role |
-|---|---|
-| `background` / `foreground` | Base surface / base text |
-| `card` | Raised surface |
-| `primary` | Primary action |
-| `secondary` | Secondary action |
-| `muted` | De-emphasized |
-| `destructive` | Destructive action |
-| `border` / `ring` | Structure / focus |
+## Shapes
 
-### A.4 Type scale law (fixed)
+The two radius tokens govern. Icons come from the single declared icon
+library.
 
-Use the scale; arbitrary font sizes are forbidden. Default scale (Zone C may
-re-declare the project's scale, replacing — not extending — this default):
+## Components
 
-| Class | Use |
-|---|---|
-| `text-sm` | Secondary/meta text |
-| `text-base` | Body |
-| `text-lg` | Emphasized body / card titles |
-| `text-xl` | Section headings |
-| `text-2xl` | Page headings |
-| `font-medium` | Default emphasis weight |
-| `font-semibold` | Headings only |
+The primitive inventory from the declared ui_primitive_library: list each
+permitted primitive and its composition rules (e.g. "Button: variants
+primary|ghost|danger; icon+label; icon-only forbidden outside toolbars").
+Components reference tokens via `{...}` refs. Every interactive primitive
+defines its full state set through variant naming (e.g. `button-primary`,
+`button-primary-hover`, `button-primary-focus`, `-active`, `-disabled`,
+`-loading`): hover, focus-visible (ring token, keyboard reachable),
+disabled, loading at minimum. Custom focus/hover overrides are forbidden.
+Loading states use skeleton primitives, not spinners. Every destructive
+action uses a confirmation dialog, never a bare destructive button. Empty
+states render a defined block, never blank space.
 
-### A.5 Composition law (fixed)
+## Motion
 
-- Pages compose declared regions inside the layout law (Zone C §C.3); ad-hoc page-level markup soup is forbidden.
-- Every destructive action uses a confirmation dialog — never a bare destructive-styled button.
-- Loading states use skeleton primitives, not spinners. Empty states render a defined empty-state block, never blank space.
+The single declared engine (`ark.motion_engine`); a second animation engine
+in the dependency tree requires a PR here. Easing and durations come from
+the declared motion tokens; browser-default easing on interactive elements
+is forbidden. Animation touches transform and opacity only. Scroll-triggered
+instances under 20 per page; groups of 10+ batch. `prefers-reduced-motion:
+reduce` collapses spatial motion to an opacity crossfade ≤150ms; content
+never depends on script or motion to appear. Scroll-jacking and
+interaction-blocking animation are forbidden outright. Smooth-scroll layer
+(Lenis) defaults ON for persuade/experience surfaces, OFF for operate/read,
+always OFF under reduced-motion.
 
-### A.6 Interaction-state law (fixed)
+## Imagery & Visual Direction
 
-Every interactive element defines, via the primitive's built-in variants:
-`hover`, `focus-visible` (ring token, keyboard navigable), `disabled`,
-`loading`. Custom focus/hover overrides are forbidden; keyboard reachability
-of every action is mandatory.
+Direction (real photography of the subject's world, illustration language,
+or generated fills — with the honest-imagery rules that govern each).
+Treatment: crop ratios, corners, filters. Exemplars with credits.
+Backgrounds: flat fields or real photography; one field change per section.
+Texture and elevation notes if used.
 
-### A.7 Spacing, radius & breakpoint law (fixed)
+## Surface Briefs
 
-- Spacing: multiples of the 4pt system; container padding declared per breakpoint. Arbitrary values are forbidden.
-- Radius: one default radius token; one raised-surface radius token.
-- Breakpoints: mobile-first; shifts only at the declared breakpoints. Desktop-first design and custom breakpoints are forbidden.
+One entry per public-facing surface, appended as the project grows:
+surface, mode, conversion goal, section jobs, proof plan (by proof type),
+`derived_from`, `last_reconciled`.
 
-### A.8 Forbidden list (extended, fixed)
+## Decisions & Provenance
 
-- Inline styles, custom CSS files, `<style>` blocks.
-- Raw color values and palette literals outside §A.3.
-- Arbitrary utility values outside §A.7.
-- Any component or icon library other than the declared ones.
-- Conditional theme-variant classes inside components — the theme owns variants.
-- New primitives without a design.md PR adding them to Zone C §C.2.
+PRD-approved design decisions, each with `derived_from` (source artifact or
+external canon — vendor MCP, governing skill, or official docs, never
+operator assumption) and `last_reconciled`. When an upstream source changes,
+grep `derived_from` to enumerate entries needing reconciliation; that is a
+governed PR, never a silent edit.
 
-### A.9 Enforcement (instrument classes)
+## Do's and Don'ts
 
-- §A.2, §A.8: linter gate at Stage 1; component rules for forbidden imports and attributes.
-- §A.3–§A.5, §A.7: token lint rules + Stage-3 visual verification (deterministic screenshots against the ephemeral preview; AI visual navigation reserved for volatile generated DOM).
-- §A.6: Stage-3 keyboard-traversal and state-coverage checks; human-gate review for composition violations.
+**Do** reference every color, font, radius, and spacing step by token name.
+**Do** compose primitives into domain components; never edit a primitive.
+**Do** ship all interaction states via variant conventions.
+**Do** respect the locked system across every page (diversification is
+inverted on system-managed projects: pages share the system).
+**Don't** use inline styles, `<style>` blocks, or raw values outside this
+file's definitions.
+**Don't** add components, icons, fonts, or engines outside the declared
+inventories — that requires a PR here first.
+**Don't** resolve themes with conditional classes; the theme owns variants.
+**Don't** fabricate proof, metrics, testimonials, or imagery.
 
-## ZONE B — PROJECT BINDINGS (human-authored at onboarding)
+## Enforcement
 
-This file's project bindings — token-framework instantiation (icon set, semantic token values, primitive inventory, layout regions) — are authored by the
-human at onboarding (project-onboard interview) and bind only what they
-explicitly declare. Zone labels never replace `applies_to:`; they state who
-may author the entry and how it enters the manifold.
-
-Canonical slot order: §B.1 Tokens & declared libraries → §B.2 Component
-primitive inventory → §B.3 Layout law. A correct token entry is a named value
-bound to a role. A correct primitive entry lists variants and composition
-rules. A screenshot is illustration, never law — law is named values and states.
-### §B.1 Tokens & declared libraries
-<!-- TEMPLATE_VALUE_REQUIRED.
-     Micro-example of completed entries:
-     - icon_library: "lucide-svelte"
-     - tokens:
-         color.background: "oklch(0.13 0.01 260)"
-         color.foreground: "oklch(0.95 0.005 260)"
-         radius.default: "0.5rem"
-         radius.raised: "0.75rem"
-     - type_scale: default (Zone A.4) — delete this line if re-declaring.
--->
-TEMPLATE_VALUE_REQUIRED
-
-### §B.2 Component primitive inventory
-<!-- TEMPLATE_VALUE_REQUIRED — declare the permitted primitives from the
-     manifest's UI library.
-     Micro-example:
-     primitives: [Button, Card, Input, Select, Dialog, Table, Tabs, Badge,
-                  Alert, Tooltip, Form, Skeleton, Separator]
-     composition:
-       - "Button: variants primary|ghost|danger; icon+label; icon-only forbidden outside toolbars"
--->
-TEMPLATE_VALUE_REQUIRED
-
-### §B.3 Layout law
-<!-- TEMPLATE_VALUE_REQUIRED — the declared page regions and per-breakpoint
-     container padding.
-     Micro-example:
-     regions: [app-shell.header, app-shell.sidebar, content, sheet]
-     container_padding: { base: "1rem", md: "1.5rem", lg: "2rem" }
--->
-TEMPLATE_VALUE_REQUIRED
-
-## ZONE C — PRD-COMPILED ENTRIES (provenance mandatory)
-
-Every Zone C entry carries `derived_from:` (source artifact or external canon)
-and `last_reconciled:` (date/SHA). For vendor and stack entries, `derived_from:` cites the authoritative instrument — the vendor's MCP server, a governing vendor skill, or official documentation — never operator assumption; assumptions are surfaced for validation, never codified as law. (CF46, 2026-09-29) An entry without both is invalid law. When
-an upstream source changes, grepping `derived_from` enumerates every downstream
-entry needing reconciliation; reconciliation is a governed change event
-(manifold PR), never a silent edit.
-
-### §C.1 PRD-approved design decisions
-<!-- TEMPLATE_VALUE_REQUIRED — design decisions ratified at PRD approval.
-     Micro-example:
-```yaml
-# - decision: "onboarding flow uses a single-column card layout on all breakpoints"
-#   derived_from: specs/prd/booking.md#design
-#   last_reconciled: 2026-09-16
-```
--->
-TEMPLATE_VALUE_REQUIRED
-
- Protocol.** Every change to any manifold file follows
-GitOps law: PR only, never direct edits on main; the empirical reason
-documented in the PR body; manifold_version bumped; last_verified advanced on
-merge; the retrieval index over .tmd/ refreshed by the merge hook. A manifold
-PR that fails to advance the headers is invalid and is rejected by CI.
+Frontmatter tokens and `{...}` refs: token lint + Stitch/impeccable
+validation at Stage 1. Component states and forbidden imports: component
+rules + shadcn-ui lint. Visual outcomes: Stage-3 rendered verification
+against the ephemeral preview. Anything ungated here is `enforcement:
+manual-review` and is reviewed at the human gate — never silently
+unenforced. Protocol: every change is a PR with the empirical reason in the
+body, `manifold_version` bumped, `last_verified` advanced on merge; a PR
+that fails to advance the headers is invalid.

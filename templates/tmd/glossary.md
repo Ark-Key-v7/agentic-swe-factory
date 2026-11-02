@@ -14,27 +14,11 @@ One canonical spelling per name; forbidden variants are rejected mechanically.
 
 ### A.1 Constitutional layer (TMD Specification v2.1, §0)
 
-**The Precedence Law (§0.1).** rules.md (1) > gravity.md (2) > promises.md (3)
-> glossary.md (4) > design.md (5). Higher precedence wins automatically; no
-agent interpretation.
-
-**The Conflict Halt (§0.2).** On any cross-file contradiction: HALT the Task
-Contract; ESCALATE via MANIFOLD_CONFLICT event naming both files, both
-clauses, and the triggering contract; RESUME only after a human-authored PR
-merges and last_verified headers advance — re-read from the new HEAD.
-
-**The Manifest Header (§0.3).** manifold_version (semver), last_verified
-(commit SHA), precedence (rank). No valid header = invalid law; halt per §0.2.
-
-**Monorepo Inheritance (§0.4).** One manifold per repository, at root; total
-inheritance. Package-local manifold files and duplicated root law forbidden.
-
-**The Instruction-File Boundary (§0.5).** One root AGENTS.md, ≤50 lines, zero
-constraint text. Harness markdown lives exclusively in /.agents/.
-
-**The Enforcement Registry (§0.6).** Every law names its wall (instrument
-class; concrete tools bound in gravity.md's gates). Ungateable law is marked
-enforcement: manual-review — never silently unenforced.
+The constitutional layer lives in full in `rules.md` §A.1 and applies here
+verbatim: the Precedence Law (§0.1), the Conflict Halt (§0.2), the Manifest
+Header (§0.3), Monorepo Inheritance (§0.4), the Instruction-File Boundary
+(§0.5), the Enforcement Registry (§0.6). This file restates nothing. On any
+question of constitutional meaning, rules.md §A.1 is the text.
 
 ### A.2 Ubiquitous language law (fixed)
 

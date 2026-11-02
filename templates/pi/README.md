@@ -15,7 +15,7 @@ manual configuration** (WP8 acceptance).
 ## What does NOT live here
 
 - `scope.json` — generated per Task Contract by
-  `node ~/factory-rig/sources/harness-config/bin/contract-scope.mjs --contract <task.md> --gravity .tmd/gravity.md --out .pi/scope.json`.
+  `node ~/factory-rig/sources/agentic-swe-factory/bin/contract-scope.mjs --contract <task.md> --gravity .tmd/gravity.md --out .pi/scope.json`.
   Absent = sandbox guard inert (WP2 design); resolved = enforced.
 - `append-system.md` — the WP3 projection is injected at onboarding (WP10),
   not stored as a second copy here (L5: reference, don't duplicate).

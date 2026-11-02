@@ -32,7 +32,7 @@ Two source documents govern this build. Where they conflict, the newer one wins.
 
 - Pi 0.84.3 (`@earendil-works/pi-coding-agent`), provider: built-in `kimi-coding` (Kimi OAuth), credentials externalized to `~/.pi/secrets/pi-auth.json` (mode 600), symlinked to `~/.pi/agent/auth.json`.
 - Factory Floor: Worktrunk 0.74.0, AMUX (pinned commit `a78ed225…`, systemd-user service, nftables localhost guard on port 8824), QMD 2.8.3, LanceDB 0.37.1 (minimal install, `--omit=optional`), Semgrep 1.174.0 (venv), Betterleaks 1.8.1, Fallow 3.18.0, PR-Agent 0.42.0 (rootless Podman, report-only wrapper, `--network none`), tmux, rootless Podman.
-- `harness-config` repo: source at `~/factory-rig/sources/harness-config`, active clone (read-only) at `~/.pi/agent`. GitHub: `git@github.com:Ark-Key-v7/harness-config.git`. Contains `rig.manifest.yaml`, `package-pins.json`, `settings.json`, `templates/AGENTS.md`, `templates/tmd/*.md` (INERT — see WP4), `pi/extensions/README.md`.
+- `harness-config` repo: source at `~/factory-rig/sources/agentic-swe-factory`, active clone (read-only) at `~/.pi/agent`. GitHub: `git@github.com:Ark-Key-v7/harness-config.git`. Contains `rig.manifest.yaml`, `package-pins.json`, `settings.json`, `templates/AGENTS.md`, `templates/tmd/*.md` (INERT — see WP4), `pi/extensions/README.md`.
 - Supply-chain discipline: exact pins, checksum verification, `--ignore-scripts`, no `curl|sh`, **`npm audit fix --force` is forbidden** (it downgraded LanceDB 0.37.1 → 0.30.0 during the build; audit is a report, never authorization).
 
 **NOT BUILT — the governance plane (this spec's subject):** Pi extensions, SYSTEM.md/projection layer, role roster profiles, skills scaffold, task-contract template, project `.pi/` template, STATE.md convention, TMD onboarding workflow, and the law-bearing TMD templates.
@@ -272,7 +272,7 @@ Applied per tool when its register trigger fires (the same procedure used for ev
 
 1. English only; platform Windows + WSL2 Ubuntu 24.04; full Factory Floor local, Hetzner remote deferred.
 2. Kimi OAuth (subscription-governed regime) is the initial provider; Claude API / OpenRouter / Helicone documented as future paths only.
-3. Source repo vs active clone: edit `~/factory-rig/sources/harness-config` → commit → push → pull into read-only `~/.pi/agent`.
+3. Source repo vs active clone: edit `~/factory-rig/sources/agentic-swe-factory` → commit → push → pull into read-only `~/.pi/agent`.
 4. TMD stays templated/inert during rig setup; project-level manifold is per-product-repo work.
 5. Acceptance tag `factory-rig-v1.0.0` covers the **substrate only**, not the governance plane.
 6. Templates must embed invariant law (three-zone contract) — ratified fix for the inert-template gap.

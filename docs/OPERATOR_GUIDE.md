@@ -105,7 +105,7 @@ required).
 
 ## Rig changes
 
-Anything under `~/factory-rig/sources/harness-config/` = rig law:
+Anything under `~/factory-rig/sources/agentic-swe-factory/` = rig law:
 edit → run drivers → **you confirm** → commit → push → `git -C ~/.pi/agent pull --ff-only`.
 The chain isn't done until the pull fast-forwards. Pi can do all of it via
 the `rig-change` skill except the confirmation — that one is yours by design.

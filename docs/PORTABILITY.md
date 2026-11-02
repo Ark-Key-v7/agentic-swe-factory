@@ -33,8 +33,8 @@ npm i -g @earendil-works/pi-coding-agent@0.84.3 --ignore-scripts
 
 # 2. Rig
 mkdir -p ~/factory-rig/sources
-git clone git@github.com:Ark-Key-v7/harness-config.git ~/factory-rig/sources/harness-config
-git clone ~/factory-rig/sources/harness-config ~/.pi/agent   # or clone from GitHub directly
+git clone git@github.com:Ark-Key-v7/harness-config.git ~/factory-rig/sources/agentic-swe-factory
+git clone ~/factory-rig/sources/agentic-swe-factory ~/.pi/agent   # or clone from GitHub directly
 
 # 2b. Cross-harness skill discovery (once per machine, idempotent)
 #     Link every rig skill into the shared scan path (~/.agents/skills/) so
@@ -57,7 +57,7 @@ mkdir -p ~/.agents && ln -sfn ~/.pi/agent/skills ~/.agents/skills
 
 # 2c. Factory tree (the harness-config clone is only PART of ~/factory-rig/)
 #     ~/factory-rig/
-#       sources/harness-config     ← step 2 (the rig itself)
+#       sources/agentic-swe-factory     ← step 2 (the rig itself)
 #       sources/_canon-handbooks/  ← canon law, machine-local files — see table above
 #       sources/_intake/           ← skill-port intake clones, re-clone as needed
 #       sources/amux               ← optional: github.com/mixpeek/amux (deferred §D.4)
@@ -138,7 +138,7 @@ mkdir -p ~/.agents && ln -sfn ~/.pi/agent/skills ~/.agents/skills
 #     Pi's seat-switch machinery is Pi-only; seat-state.json is not read here.
 
 # 3. Prove the rig
-cd ~/factory-rig/sources/harness-config
+cd ~/factory-rig/sources/agentic-swe-factory
 for d in validation/*/; do node "$d"*.test.mjs || break; done   # all suites green
 node tools/check-projections.mjs                                # drift clean
 

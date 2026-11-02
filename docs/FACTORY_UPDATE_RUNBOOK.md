@@ -5,7 +5,7 @@ _The rig's own law: every harness change flows through the one-directional chain
 ## The chain (every change, no exceptions)
 
 ```
-~/factory-rig/sources/harness-config   ← the ONLY working tree you edit
+~/factory-rig/sources/agentic-swe-factory   ← the ONLY working tree you edit
         │  validate (drivers + linters)
         │  stage EXACT paths (never git add -A)
         │  human confirmation (§5.4)
@@ -41,7 +41,7 @@ The `rig-change` skill operationalizes this inside a Pi session. This runbook is
 ## Full local validation suite
 
 ```bash
-cd ~/factory-rig/sources/harness-config
+cd ~/factory-rig/sources/agentic-swe-factory
 for f in validation/*/*.test.mjs; do node "$f" || break; done
 node bin/check-projections.mjs        # drift: committed projections == regenerated
 node bin/assert-projection-fresh.mjs  # freshness: recorded head == last input-touching commit
@@ -59,7 +59,7 @@ All green is the only acceptable pre-commit state. **Never commit with a failing
 
 - Downloads crossing Windows→WSL: verify with `ls -la` of the target folder. Watch for lost leading dots (`.mcp.json`, `.gitignore`), `(1)` filename collisions (identify skills by their `name:` field), and `*:Zone.Identifier` stowaways (git-ignored, but check anyway).
 - Driver scratch must never be committed — `validation/.gitignore` covers it; `git status --short` before staging.
-- Repo layout: rig source lives only in `sources/harness-config/`; outer `~/factory-rig/{tools,validation,tmp}` is the WP0 machine-local floor — never commit from there.
+- Repo layout: rig source lives only in `sources/agentic-swe-factory/`; outer `~/factory-rig/{tools,validation,tmp}` is the WP0 machine-local floor — never commit from there.
 
 ## Canon revision (updated handbook lands)
 
